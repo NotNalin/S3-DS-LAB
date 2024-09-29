@@ -10,7 +10,7 @@ struct node
 int main()
 {
     struct node *start = NULL, *ptr, *temp, *prev;
-    int choice, data, pos, i;
+    int choice, data, i;
 
     do
     {
