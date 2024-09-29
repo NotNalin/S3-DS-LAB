@@ -14,12 +14,12 @@ struct node *Create()
     start = NULL;
     printf("Enter the number of terms: ");
     scanf("%d", &n);
-    printf("Enter the terms: ");
+    printf("Enter the terms: \n");
     for (i = 0; i < n; i++)
     {
         tmp = malloc(sizeof(struct node));
 
-        printf("\nEnter coeff and exp: ");
+        printf("Enter coeff and exp: ");
         scanf("%d %d", &coeff, &exp);
 
         tmp->coeff = coeff;
@@ -42,7 +42,6 @@ struct node *Create()
             ptr->link = tmp;
         }
     }
-
     return start;
 }
 
@@ -63,7 +62,7 @@ void main()
         printf(" %d x^%d +", ptr1->coeff, ptr1->exp);
         ptr1 = ptr1->link;
     }
-    printf(" %d x^%d\n\n", ptr1->coeff, ptr1->exp);
+    printf(" %d x^%d", ptr1->coeff, ptr1->exp);
 
     printf("\nSecond Polynomial is : \n");
     while (ptr2->link != NULL)
@@ -71,7 +70,7 @@ void main()
         printf(" %d x^%d +", ptr2->coeff, ptr2->exp);
         ptr2 = ptr2->link;
     }
-    printf(" %d x^%d\n\n", ptr2->coeff, ptr2->exp);
+    printf(" %d x^%d", ptr2->coeff, ptr2->exp);
 
     ptr1 = start1;
     ptr2 = start2;
@@ -163,5 +162,5 @@ void main()
         printf(" %d x^%d +", ptr3->coeff, ptr3->exp);
         ptr3 = ptr3->link;
     }
-    printf(" %d x^%d\n\n", ptr3->coeff, ptr3->exp);
+    printf(" %d x^%d", ptr3->coeff, ptr3->exp);
 }
