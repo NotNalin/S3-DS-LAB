@@ -138,6 +138,7 @@ void main()
     while (ptr2 != NULL)
     {
         tmp = malloc(sizeof(struct node));
+        tmp->link = NULL;
 
         tmp->coeff = ptr2->coeff;
         tmp->exp = ptr2->exp;
