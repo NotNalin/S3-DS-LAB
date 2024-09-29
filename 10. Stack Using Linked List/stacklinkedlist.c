@@ -10,7 +10,7 @@ struct node
 int main()
 {
     struct node *start = NULL, *ptr, *temp, *prev;
-    int choice, data, pos, i;
+    int choice, data, i;
 
     do
     {
@@ -23,45 +23,24 @@ int main()
         scanf("%d", &choice);
         switch (choice)
         {
-        case 1: // Insertion at end
+        case 1: // Insert at Beginning
             temp = malloc(sizeof(struct node));
             printf("Enter data to insert: ");
             scanf("%d", &data);
             temp->data = data;
-            temp->link = NULL;
-            if (start == NULL)
-            {
-                start = temp;
-            }
-            else
-            {
-                ptr = start;
-                while (ptr->link != NULL)
-                {
-                    ptr = ptr->link;
-                }
-                ptr->link = temp;
-            }
+            temp->link = start;
+            start = temp;
             break;
-        case 2: // Deletion from end
+        case 2: // Delete from Beginning
             if (start == NULL)
             {
                 printf("List is empty\n");
             }
-            else if (start->link == NULL)
-            {
-                free(start);
-                start = NULL;
-            }
             else
             {
                 ptr = start;
-                while (ptr->link->link != NULL)
-                {
-                    ptr = ptr->link;
-                }
-                free(ptr->link);
-                ptr->link = NULL;
+                start = start->link;
+                free(ptr);
             }
             break;
         case 3: // Display
@@ -73,7 +52,7 @@ int main()
             {
                 for (ptr = start; ptr != NULL; ptr = ptr->link)
                 {
-                    printf("%d ", ptr->data);
+                    printf("%d\n", ptr->data);
                 }
             }
             break;
