@@ -5,7 +5,7 @@ struct node
     struct node *lchild;
     int data;
     struct node *rchild;
-} *root = NULL, *tmp = NULL, *loc = NULL, *par = NULL, *ptr = NULL, *save = NULL, *child = NULL, *suc = NULL, *parsuc = NULL;
+} *root = NULL, *tmp = NULL, *loc = NULL, *par = NULL, *ptr = NULL, *save = NULL;
 
 void find(int item)
 {
@@ -56,77 +56,6 @@ void insert(int item)
         par->rchild = tmp;
 }
 
-// deletion - no children
-void case_a(struct node *loc, struct node *par)
-{
-    if (par == NULL)
-        root = NULL;
-    else if (loc == par->lchild)
-        par->lchild = NULL;
-    else
-        par->rchild = NULL;
-}
-
-// deletion - one child
-void case_b(struct node *loc, struct node *par)
-{
-    if (loc->lchild != NULL)
-        child = loc->lchild;
-    else
-        child = loc->rchild;
-    if (par != NULL)
-    {
-        if (loc == par->lchild)
-            par->lchild = child;
-        else
-            par->rchild = child;
-    }
-    else
-        root = child;
-}
-
-// deletion - two children
-void case_c(struct node *loc, struct node *par)
-{
-    save = loc;
-    ptr = loc->rchild;
-    while (ptr->lchild != NULL)
-    {
-        save = ptr;
-        ptr = ptr->lchild;
-    }
-    suc = ptr;
-    parsuc = save;
-    if (suc->lchild == NULL && suc->rchild == NULL)
-        case_a(suc, parsuc);
-    else
-        case_b(suc, parsuc);
-    loc->data = suc->data;
-    if (par == NULL)
-        root = suc;
-    else if (loc == par->lchild)
-        par->lchild = suc;
-    else
-        par->rchild = suc;
-    suc->lchild = loc->lchild;
-    suc->rchild = loc->rchild;
-}
-
-void delete(int item)
-{
-    find(item);
-    if (loc != NULL)
-    {
-        if (loc->lchild == NULL && loc->rchild == NULL)
-            case_a(loc, par);
-        else if (loc->lchild == NULL || loc->rchild == NULL)
-            case_b(loc, par);
-        else
-            case_c(loc, par);
-        free(loc);
-    }
-}
-
 void preorder(struct node *x)
 {
     if (x != NULL)
@@ -172,10 +101,9 @@ void main()
     {
         printf("Menu:\n");
         printf("1. Insert\n");
-        printf("2. Delete\n");
-        printf("3. Display Inorder\n");
-        printf("4. Display Preorder\n");
-        printf("5. Display Postorder\n");
+        printf("2. Display Inorder\n");
+        printf("3. Display Preorder\n");
+        printf("4. Display Postorder\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -188,21 +116,16 @@ void main()
             insert(item);
             break;
         case 2:
-            printf("Enter item to delete: ");
-            scanf("%d", &item);
-            delete (item);
-            break;
-        case 3:
             printf("Inorder traversal: ");
             inorder(root);
             printf("\n");
             break;
-        case 4:
+        case 3:
             printf("Preorder traversal: ");
             preorder(root);
             printf("\n");
             break;
-        case 5:
+        case 4:
             printf("Postorder traversal: ");
             postorder(root);
             printf("\n");
