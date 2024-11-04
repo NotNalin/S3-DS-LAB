@@ -37,18 +37,6 @@ void insertion(int A[], int n)
     }
 }
 
-void selection(int A[], int n)
-{
-    int loc, temp, k;
-    for (k = 1; k < n; k++)
-    {
-        min(A, k, n, &loc);
-        temp = A[k];
-        A[k] = A[loc];
-        A[loc] = temp;
-    }
-}
-
 void min(int A[], int k, int n, int *loc)
 {
     int min = A[k];
@@ -60,6 +48,18 @@ void min(int A[], int k, int n, int *loc)
             min = A[j];
             *loc = j;
         }
+    }
+}
+
+void selection(int A[], int n)
+{
+    int loc, temp, k;
+    for (k = 1; k < n; k++)
+    {
+        min(A, k, n, &loc);
+        temp = A[k];
+        A[k] = A[loc];
+        A[loc] = temp;
     }
 }
 
