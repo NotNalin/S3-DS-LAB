@@ -44,7 +44,7 @@ void main()
     for (i = 0; i < n; i++)
         scanf("%d", &A[i]);
     heapsort(A, n);
-    printf("Sorted array is\n");
+    printf("\nSorted array is\n");
     for (i = 0; i < n; i++)
         printf("%d\t", A[i]);
     printf("\n");
