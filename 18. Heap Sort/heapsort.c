@@ -16,6 +16,9 @@ void heapify(int A[], int n, int i)
         A[largest] = temp;
         heapify(A, n, largest);
     }
+    printf("\nHeap after each heapify\n");
+    for(int k=0;k<n;k++)
+        printf("%d ",A[k]);
 }
 void heapsort(int A[], int n)
 {
