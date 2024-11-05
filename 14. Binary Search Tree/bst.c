@@ -43,17 +43,30 @@ void insert(int item)
 {
     find(item);
     if (loc != NULL)
+    { 
+        printf("Element already exists\n");
         return;
+    }
+        
     tmp = malloc(sizeof(struct node));
     tmp->data = item;
     tmp->lchild = NULL;
     tmp->rchild = NULL;
     if (par == NULL)
+    {
+        printf("Inserted %d as root node \n",item);
         root = tmp;
+    }
     else if (item < par->data)
+    {
         par->lchild = tmp;
+        printf("Inserted %d as left child of %d\n",item,par->data);
+    }
     else
+    {
         par->rchild = tmp;
+        printf("Inserted %d as right child of %d\n",item,par->data);
+    }
 }
 
 void preorder(struct node *x)
