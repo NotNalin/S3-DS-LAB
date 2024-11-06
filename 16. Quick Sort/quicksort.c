@@ -5,7 +5,7 @@ int partition(int A[], int lb, int ub)
     int i, j, pivot, temp;
     pivot = A[lb];
     i = lb;
-    j = ub + 1;
+    j = ub;
     while (i < j)
     {
         while (A[i] <= pivot)
