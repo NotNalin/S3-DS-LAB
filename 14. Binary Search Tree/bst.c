@@ -68,17 +68,6 @@ void insert(int item)
         printf("Inserted %d as right child of %d\n",item,par->data);
     }
 }
-
-void preorder(struct node *x)
-{
-    if (x != NULL)
-    {
-        printf("%d ", x->data);
-        preorder(x->lchild);
-        preorder(x->rchild);
-    }
-}
-
 void inorder(struct node *x)
 {
     if (x != NULL)
@@ -88,17 +77,6 @@ void inorder(struct node *x)
         inorder(x->rchild);
     }
 }
-
-void postorder(struct node *x)
-{
-    if (x != NULL)
-    {
-        postorder(x->lchild);
-        postorder(x->rchild);
-        printf("%d ", x->data);
-    }
-}
-
 void main()
 {
     int choice, item, n, i;
@@ -115,8 +93,6 @@ void main()
         printf("Menu:\n");
         printf("1. Insert\n");
         printf("2. Display Inorder\n");
-        printf("3. Display Preorder\n");
-        printf("4. Display Postorder\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -131,16 +107,6 @@ void main()
         case 2:
             printf("Inorder traversal: ");
             inorder(root);
-            printf("\n");
-            break;
-        case 3:
-            printf("Preorder traversal: ");
-            preorder(root);
-            printf("\n");
-            break;
-        case 4:
-            printf("Postorder traversal: ");
-            postorder(root);
             printf("\n");
             break;
         case 0:
